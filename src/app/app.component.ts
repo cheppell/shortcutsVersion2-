@@ -61,6 +61,16 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit, AfterCont
   // <------------------------ test ------------------------------->
   ngOnInit() {
     console.info("ngOnInit()");
+    var step = this.currentStep?.index;
+
+    console.log("step is " + step);
+
+    if(step?.toString() ==  "8"){
+      console.log("Test si on se rend a 8");
+      this.stepsService.reset();
+    }
+
+    console.log("currentStep " + this.currentStep?.index);
 
     this.route.queryParamMap.subscribe(params => {
       if(params.get('test')) {
