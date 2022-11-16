@@ -1,0 +1,19 @@
+<mat-horizontal-stepper linear #stepper (selectionChange)="setIndex($event)" (click)="triggerClick()">
+  <mat-step label="Step 1" state="clavier" completed="{{this.complete()}}" editable="false">
+    <p>Des steps dans les step c'est formidable!</p>
+  </mat-step>
+  <mat-step label="Step 2" state="clavier" selectedStep="2"  editable="false">
+    <p>On essaie encor un peu!</p>
+  </mat-step>
+  <mat-step label="END" state="good" selectedStep="3"    editable="false">
+    <p>Épreuve réussite!</p>
+  </mat-step>
+  <ng-template matStepperIcon="clavier">
+    <mat-icon>keyboard</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="good">
+    <mat-icon>done_all</mat-icon>
+  </ng-template>
+</mat-horizontal-stepper>
+
+

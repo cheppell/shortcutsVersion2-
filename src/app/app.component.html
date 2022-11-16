@@ -436,28 +436,28 @@
 
 
     <!--------------------------------------- IF mouse move --------------------------------------->
-    <div *ngIf="this.currentStep?.index  != 7 " class="slider" style="margin: 10px" [ngStyle]="{'margin-left': (mouseService._x*2 - 750) + 'px'}">
+    <div *ngIf="this.currentStep?.index  != 9 " class="slider" style="margin: 10px" [ngStyle]="{'margin-left': (mouseService._x*2 - 750) + 'px'}">
       NOOO!!!!
     </div>
 
-    <div *ngIf="this.currentStep?.index  == 7 " class="slider" style="margin: 10px" [ngStyle]="{'margin-left': (mouseService._x*2 - 750) + 'px'}">
+    <div *ngIf="this.currentStep?.index  == 9 " class="slider" style="margin: 10px" [ngStyle]="{'margin-left': (mouseService._x*2 - 750) + 'px'}">
       YESSS!!!!
     </div>
 
 
 
-    <div *ngIf="this.currentStep?.index  != 7 " class="no-move" [ngStyle]="{'font-size': mouseService._x + 'px'}">
+    <div *ngIf="this.currentStep?.index  != 9 " class="no-move" [ngStyle]="{'font-size': mouseService._x + 'px'}">
       DON'T MOVE YOUR MOUSE DAMNIT!
     </div>
 
-    <div *ngIf="this.currentStep?.index  == 7 " class="no-move" [ngStyle]="{'font-size': mouseService._x + 'px'}">
+    <div *ngIf="this.currentStep?.index  == 9 " class="no-move" [ngStyle]="{'font-size': mouseService._x + 'px'}">
       You're a BIG WINNER!
     </div>
     <!--------------------------------------- IF mouse move --------------------------------------->
 
     <!--------------------------------------- Content of Steps --------------------------------------->
 
-    <div *ngIf="this.currentStep?.index  != 7 " class="container">
+    <div *ngIf="this.currentStep?.index  != 9 " class="container">
       <div class="row">
         <div class="col-5" *ngIf="this.currentStep?.index  == 1 ">
           <h2 class="centrer_text" >On prend pour acquis que vous connaissez les raccourcis copie, paste sinon  vous êtes posh !! </h2>
@@ -550,6 +550,8 @@
           <!--------------------------------------- STEP 5 --------------------------------------->
 
           <!--------------------------------------- STEP 6 --------------------------------------->
+
+
           <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 6" class="container bulleyes">
             <div class="row bulleyes">
               <h4>***AIDE*** Pour la sélection du texte utiliser les shortcuts &nbsp; <b>ctrl+shift+flèche droite  ou  gauche et tab peu servir</b> &nbsp; ***Fin de l'aide***</h4>
@@ -558,11 +560,69 @@
           </div>
           <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 6" class="container bulleyes">
             <div class="row bulleyes">
+              <p>Pour passer à la prochaine étape vous devez copié la 2 eme ligne du premier textarea et le collé dans le second!</p>
+            </div>
+          </div>
+
+          <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 6" class="bulleyes" >
+
+            <form class="example-form pad_Top" [formGroup]="myGroupes">
+              <div class="row">
+                <div class="col">
+                  <mat-form-field class="bulleyes " appearance="outline" color="warn" >
+                    <mat-label>Next Step</mat-label>
+
+                    <textarea matInput autofocus placeholder="Step 6"  type="text" rows="4" [cols]="19" cdkTextareaAutosize  [cdkAutosizeMinRows]="3" formControlName="txtCopier" >
+                    </textarea>
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field class="bulleyes example-full-width" appearance="fill">
+                    <mat-label>Paste here the text</mat-label>
+                    <textarea matInput #input2 (change)="onNewTextChange($event)" placeholder="coller ici!"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--------------------------------------- STEP 6 --------------------------------------->
+
+          <!--------------------------------------- STEP 7 --------------------------------------->
+
+
+          <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 7" class="container bulleyes">
+            <div class="row bulleyes">
+              <h4>***AIDE*** Pour les shortcuts &nbsp; <b>tab peu servir et tab+shift, fleche gauche et droite puis enter</b> &nbsp; ***Fin de l'aide***</h4>
+            </div>
+            <hr/>
+          </div>
+          <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 7" class="container bulleyes">
+            <div class="row bulleyes">
+              <p>Pour passer à la prochaine étape vous devez completer l'épreuve suivante qui est de se rendre a la fin de c'est micro step!</p>
+            </div>
+          </div>
+
+          <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 7" class="bulleyes">
+            <app-stepper></app-stepper>
+          </div>
+          <!--------------------------------------- STEP 7 --------------------------------------->
+
+
+
+          <!--------------------------------------- STEP 8 --------------------------------------->
+          <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 8" class="container bulleyes">
+            <div class="row bulleyes">
+              <h4>***AIDE*** Pour la sélection du texte utiliser les shortcuts &nbsp; <b>ctrl+shift+flèche droite  ou  gauche et tab peu servir</b> &nbsp; ***Fin de l'aide***</h4>
+            </div>
+            <hr/>
+          </div>
+          <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 8" class="container bulleyes">
+            <div class="row bulleyes">
               <p>Pour passer à la prochaine étape vous devez completer le text et copié le texte de l'input et le collé dans l'url!</p>
             </div>
           </div>
 
-          <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 6" class="bulleyes">
+          <div *ngIf="this.currentStep?.index  != 1 && this.currentStep?.index  == 8" class="bulleyes">
             <form class="example-form pad_Top" >
               <div class="row">
                 <div class="col">
@@ -574,7 +634,7 @@
               </div>
             </form>
           </div>
-          <!--------------------------------------- STEP 6 --------------------------------------->
+          <!--------------------------------------- STEP 8 --------------------------------------->
 
         </div>
         <!--------------------------------------- ELSE STEP 1 --------------------------------------->
@@ -588,7 +648,7 @@
     <!--------------------------------------- Content of Steps --------------------------------------->
 
     <!--------------------------------------- STEP 7 --------------------------------------->
-    <div *ngIf="this.currentStep?.index  == 7 " class="image">
+    <div *ngIf="this.currentStep?.index  == 9 " class="image">
       <img class="img-responsive" src="assets/winner-drole.gif" width="260px" height="150px">
     </div>
     <!--------------------------------------- STEP 7 --------------------------------------->

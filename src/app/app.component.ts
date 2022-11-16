@@ -1,23 +1,34 @@
+
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, Input, AfterContentInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MouseService } from './services/mouse.service';
 import { IStep, StepsService } from './services/steps.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
 import { ActivatedRoute } from '@angular/router';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, Validators, FormGroup} from '@angular/forms';
 import { MatSelectChange } from "@angular/material/select";
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 interface Animal {
   name: string;
   sound: string;
 }
 
+const SAMPLE_TEXT= "-Première ligne copie pas ici -Deuxième ligne copie oui <- -Stop touche pas a elle"
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {displayDefaultIndicatorType: false},
+    },
+  ],
 })
 export class AppComponent implements AfterViewInit, OnDestroy, OnInit, AfterContentInit{
   //title = 'Shortcuts New Version';
@@ -35,6 +46,10 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit, AfterCont
     value: "",
     text: ""
   };
+
+  myGroupes = new FormGroup({
+    txtCopier: new FormControl(SAMPLE_TEXT),
+  });
 
   //
   title = 'shortcuts';
@@ -61,17 +76,18 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit, AfterCont
   // <------------------------ test ------------------------------->
   ngOnInit() {
     console.info("ngOnInit()");
+    // <------------------------ for the end and reset to the first step ------------------------------->
     var step = this.currentStep?.index;
 
     console.log("step is " + step);
 
-    if(step?.toString() ==  "8"){
-      console.log("Test si on se rend a 8");
+    if(step?.toString() ==  "10"){
+      console.log("Test si on se rend a 9");
       this.stepsService.reset();
     }
 
     console.log("currentStep " + this.currentStep?.index);
-
+    // <------------------------ for the end and reset to the first step ------------------------------->
     this.route.queryParamMap.subscribe(params => {
       if(params.get('test')) {
         console.log("param test is " + params.get('test'));
